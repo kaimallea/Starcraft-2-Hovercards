@@ -1625,7 +1625,7 @@
 
     function generateHTML (name, sc2obj) {
         var header = "<table><tr><th align='left'>{{name}}</th>" +
-                     "<th style='background-image: url(\"{{sprite}}\"); {{race}};'" +
+                     "<th style='background-image: url(\"{{sprite}}\"); background-repeat: no-repeat; {{race}};'" +
                      "height='25px' width='25px' align='right'>&nbsp;</th></tr></table>",
             
             resources = "<span class='sc2-resource' style='background-image: url(\"{{sprite}}\"); {{bg_supply}};'>&nbsp;&nbsp;&nbsp;&nbsp;{{supply}}</span>" +
