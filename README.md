@@ -49,214 +49,214 @@ Below is a listing of all the game objects that can be specified within a `rel` 
 
 ### Protoss Units
 
->Archon
-Carrier
-Colossus
-Dark Templar
-High Templar
-Immortal
-Inteceptors
-Mothership
-Observer
-Phoenix
-Probe
-Sentry
-Stalker
-Void Ray
-Warp Prism
-Zealot
+* Archon
+* Carrier
+* Colossus
+* Dark Templar
+* High Templar
+* Immortal
+* Inteceptors
+* Mothership
+* Observer
+* Phoenix
+* Probe
+* Sentry
+* Stalker
+* Void Ray
+* Warp Prism
+* Zealot
 
 ### Protoss Structures
 
->Assimilator
-Cybernetics Core
-Dark Shrine
-Fleet Beacon
-Forge
-Gateway
-Nexus
-Photon Cannon
-Pylon
-Robotics Bay
-Robotics Facility
-Stargate
-Templar Archives
-Twilight Council
+* Assimilator
+* Cybernetics Core
+* Dark Shrine
+* Fleet Beacon
+* Forge
+* Gateway
+* Nexus
+* Photon Cannon
+* Pylon
+* Robotics Bay
+* Robotics Facility
+* Stargate
+* Templar Archives
+* Twilight Council
 
 ### Protoss Upgrades
 
->Air Armor Level 1
-Air Armor Level 2
-Air Armor Level 3
-Air Weapons Level 1
-Air Weapons Level 2
-Air Weapons Level 3
-Blink
-Charge
-Extended Thermal Lances
-Flux Vanes
-Gravitic Booster
-Gravitic Drive
-Graviton Catapult
-Ground Armor Level 1
-Ground Armor Level 2
-Ground Armor Level 3
-Ground Weapons Level 1
-Ground Weapons Level 2
-Ground Weapons Level 3
-Hallucination
-Khaydarin Amulet
-Psionic Storm
-Shields Level 1
-Shields Level 2
-Shields Level 3
-Warpgate
+* Air Armor Level 1
+* Air Armor Level 2
+* Air Armor Level 3
+* Air Weapons Level 1
+* Air Weapons Level 2
+* Air Weapons Level 3
+* Blink
+* Charge
+* Extended Thermal Lances
+* Flux Vanes
+* Gravitic Booster
+* Gravitic Drive
+* Graviton Catapult
+* Ground Armor Level 1
+* Ground Armor Level 2
+* Ground Armor Level 3
+* Ground Weapons Level 1
+* Ground Weapons Level 2
+* Ground Weapons Level 3
+* Hallucination
+* Khaydarin Amulet
+* Psionic Storm
+* Shields Level 1
+* Shields Level 2
+* Shields Level 3
+* Warpgate
 
 ### Terran Units
 
->Banshee
-Battlecruiser
-Ghost
-Hellion
-Marauder
-Marine
-Medivac
-MULE
-Raven
-Reaper
-SCV
-Siege Tank
-Thor
-Viking
+* Banshee
+* Battlecruiser
+* Ghost
+* Hellion
+* Marauder
+* Marine
+* Medivac
+* MULE
+* Raven
+* Reaper
+* SCV
+* Siege Tank
+* Thor
+* Viking
 
 ### Terran Structures
 
->Armory
-Barracks
-Bunker
-Command Center
-Engineering Bay
-Factory
-Fusion Core
-Ghost Academy
-Missile Turret
-Reactor
-Refinery
-Sensor Tower
-Starport
-Supply Depot
-Tech Lab
+* Armory
+* Barracks
+* Bunker
+* Command Center
+* Engineering Bay
+* Factory
+* Fusion Core
+* Ghost Academy
+* Missile Turret
+* Reactor
+* Refinery
+* Sensor Tower
+* Starport
+* Supply Depot
+* Tech Lab
 
 ### Terran Upgrades
 
->250mm Strike Cannons
-Arm Silo with Nuke
-Behemoth Reactor
-Building Armor
-Caduceus Reactor
-Cloaking Field
-Combat Shield
-Concussive Shells
-Corvid Reactor
-Durable Materials
-Hi-Sec Auto Tracking
-Infantry Armor Level 1
-Infantry Armor Level 2
-Infantry Armor Level 3
-Infantry Weapons Level 1
-Infantry Weapons Level 2
-Infantry Weapons Level 3
-Infernal Pre-Igniter
-Moebius Reactor
-Neosteel Frames
-Nitro Packs
-Orbital Command
-Personal Cloaking
-Planetary Fortress
-Seeker Missile
-Ship Plating Level 1
-Ship Plating Level 2
-Ship Plating Level 3
-Ship Weapons Level 1
-Ship Weapons Level 2
-Ship Weapons Level 3
-Siege Tech
-Stimpack
-Vehicle Plating Level 1
-Vehicle Plating Level 2
-Vehicle Plating Level 3
-Vehicle Weapons Level 1
-Vehicle Weapons Level 2
-Vehicle Weapons Level 3
-Weapon Refit
+* 250mm Strike Cannons
+* Arm Silo with Nuke
+* Behemoth Reactor
+* Building Armor
+* Caduceus Reactor
+* Cloaking Field
+* Combat Shield
+* Concussive Shells
+* Corvid Reactor
+* Durable Materials
+* Hi-Sec Auto Tracking
+* Infantry Armor Level 1
+* Infantry Armor Level 2
+* Infantry Armor Level 3
+* Infantry Weapons Level 1
+* Infantry Weapons Level 2
+* Infantry Weapons Level 3
+* Infernal Pre-Igniter
+* Moebius Reactor
+* Neosteel Frames
+* Nitro Packs
+* Orbital Command
+* Personal Cloaking
+* Planetary Fortress
+* Seeker Missile
+* Ship Plating Level 1
+* Ship Plating Level 2
+* Ship Plating Level 3
+* Ship Weapons Level 1
+* Ship Weapons Level 2
+* Ship Weapons Level 3
+* Siege Tech
+* Stimpack
+* Vehicle Plating Level 1
+* Vehicle Plating Level 2
+* Vehicle Plating Level 3
+* Vehicle Weapons Level 1
+* Vehicle Weapons Level 2
+* Vehicle Weapons Level 3
+* Weapon Refit
 
 
 ### Zerg Units
  
->Baneling
-Brood Lord
-Corruptor
-Drone
-Hydralisk
-Infestor
-Larva
-Mutalisk
-Nydus Worm
-Overlord
-Overseer
-Queen
-Roach
-Ultralisk
-Zergling
+* Baneling
+* Brood Lord
+* Corruptor
+* Drone
+* Hydralisk
+* Infestor
+* Larva
+* Mutalisk
+* Nydus Worm
+* Overlord
+* Overseer
+* Queen
+* Roach
+* Ultralisk
+* Zergling
 
 ### Zerg Structures
 
->Baneling Nest
-Creep Tumor
-Evolution Chamber
-Extractor
-Greater Spire
-Hatchery
-Hive
-Hydralisk Den
-Infestation Pit
-Lair
-Nydus Network
-Roach Warren
-Spawning Pool
-Spine Crawler
-Spire
-Spore Crawler
-Ultralisk Cavern
+* Baneling Nest
+* Creep Tumor
+* Evolution Chamber
+* Extractor
+* Greater Spire
+* Hatchery
+* Hive
+* Hydralisk Den
+* Infestation Pit
+* Lair
+* Nydus Network
+* Roach Warren
+* Spawning Pool
+* Spine Crawler
+* Spire
+* Spore Crawler
+* Ultralisk Cavern
 
 ### Zerg Upgrades
 
->Adrenal Glands
-Centrifugal Hooks
-Chitinous Plating
-Flyer Attack Level 1
-Flyer Attack Level 2
-Flyer Attack Level 3
-Flyer Carapace Level 1
-Flyer Carapace Level 2
-Flyer Carapace Level 3
-Gilal Reconstitution
-Grooved Spines
-Ground Carapace Level 1
-Ground Carapace Level 2
-Ground Carapace Level 3
-Melee Attacks Level 1
-Melee Attacks Level 2
-Melee Attacks Level 3
-Metabolic Boost
-Missile Attacks Level 1
-Missile Attacks Level 2
-Missile Attacks Level 3
-Neural Parasite
-Pathogen Glands
-Pneumatized Carapace
-Tunneling Claws
-Ventral Sacs
+* Adrenal Glands
+* Centrifugal Hooks
+* Chitinous Plating
+* Flyer Attack Level 1
+* Flyer Attack Level 2
+* Flyer Attack Level 3
+* Flyer Carapace Level 1
+* Flyer Carapace Level 2
+* Flyer Carapace Level 3
+* Gilal Reconstitution
+* Grooved Spines
+* Ground Carapace Level 1
+* Ground Carapace Level 2
+* Ground Carapace Level 3
+* Melee Attacks Level 1
+* Melee Attacks Level 2
+* Melee Attacks Level 3
+* Metabolic Boost
+* Missile Attacks Level 1
+* Missile Attacks Level 2
+* Missile Attacks Level 3
+* Neural Parasite
+* Pathogen Glands
+* Pneumatized Carapace
+* Tunneling Claws
+* Ventral Sacs
 
 [1]: http://code.google.com/apis/storage/ "Google Storage"
 [2]: http://commondatastorage.googleapis.com/mallea/js/sc2-hovercards-min.js
