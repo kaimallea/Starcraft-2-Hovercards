@@ -13,7 +13,7 @@
     var i = 0,
         hovercard_customized = false,
         hovercard_sprites = {
-            img: "img/sc2icons.png",
+            img: "https://commondatastorage.googleapis.com/mallea/img/sc2icons.png",
             Protoss: "background-position: 0px -248px",
             Terran: "background-position: 0px -283px",
             Zerg: "background-position: 0px -318px",
@@ -1615,20 +1615,31 @@
             });
     }
 
+
     function lower(word){
         return word.toLowerCase();
     }
 
+
     function upper(word){
         return word.substr(0,1).toUpperCase() + word.substr(1);
     }
+
+
+    function formatTime (secs) {
+        var mins = Math.floor(secs / 60),
+            secs = secs % 60;
+        return (mins < 10 ? "0" + mins : mins) + ":" +
+               (secs < 10 ? "0" + secs : secs);
+    }
+
 
     function generateHTML (name, sc2obj) {
         var header = "<table><tr><th align='left'>{{name}}</th>" +
                      "<th style='background-image: url(\"{{sprite}}\"); background-repeat: no-repeat; {{race}};'" +
                      "height='25px' width='25px' align='right'>&nbsp;</th></tr></table>",
             
-            resources = "<span class='sc2-resource' style='background-image: url(\"{{sprite}}\"); {{bg_supply}};'>&nbsp;&nbsp;&nbsp;&nbsp;{{supply}}</span>" +
+            resources = "<span class='sc2-resource' style='background-image: url(\"{{sprite}}\"); {{bg_supply}};'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{supply}}</span>" +
                         "<span class='sc2-resource' style='background-image: url(\"{{sprite}}\"); {{bg_mineral}};'>&nbsp;&nbsp;&nbsp;&nbsp;{{mineral}}</span>" +
                         "<span class='sc2-resource' style='background-image: url(\"{{sprite}}\"); {{bg_vespene}};'>&nbsp;&nbsp;&nbsp;&nbsp;{{vespene}}</span>" +
                         "<span class='sc2-resource' style='background-image: url(\"{{sprite}}\"); {{bg_build_time}};'>&nbsp;&nbsp;&nbsp;&nbsp;{{build_time}}</span><div style='clear: both'></div><br />";
@@ -1657,7 +1668,7 @@
                              .replace("{{bg_vespene}}", hovercard_sprites.vespene[sc2obj.race]);
 
         // Inject object's build time (or "0") and build time sprite
-        resources = resources.replace("{{build_time}}", (sc2obj.build_time ? sc2obj.build_time : "0"))
+        resources = resources.replace("{{build_time}}", formatTime((sc2obj.build_time ? sc2obj.build_time : "0")))
                              .replace("{{bg_build_time}}", hovercard_sprites.build_time[sc2obj.race]);
                              
         // Build "Requires" list
@@ -1683,6 +1694,7 @@
         return (header + resources);
     }
  
+
     function getMouseCoords (e) {
         var posx = 0,
             posy = 0;
