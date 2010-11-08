@@ -1757,6 +1757,10 @@
     for ( ; i < elements.length; i += 1) {
         var e = elements[i];
         if (sc2objects.regex.test(e.getAttribute("rel"))) {
+            
+            // Don't mangle existing stuff
+            if (e.onmousemove || e.onmouseout) { return; }
+            
             e.onmousemove = function (ev) {
                 var coords = getMouseCoords(ev);
                 if (!coords) { return; }
