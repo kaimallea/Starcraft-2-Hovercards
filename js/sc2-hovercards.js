@@ -2,6 +2,7 @@
  * @description SC2 Hovercards
  * @version 0.1a
  * @author Kai Mallea <kai@mallea.net>
+ * @license The MIT License - http://www.opensource.org/licenses/mit-license.php
  */
 (function () {
     var elements = document.querySelectorAll('*[rel]') ||
