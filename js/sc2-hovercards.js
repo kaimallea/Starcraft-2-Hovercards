@@ -35,7 +35,7 @@ var SC2HC = (function () {
                 Zerg: "background-position: 0px -224px"
             }
         },
-        hovercard_style = "#sc2-hovercard { height: 120px; width: 225px; color: #fff; font-family: Verdana; font-size: 1em; padding: 5px; background-color: #000; border: solid 2px #ccc; -webkit-border-radius: 5px; -moz-border-radius: 5px; -moz-opacity: 0.9; opacity:.9; -moz-box-shadow: 3px 3px 10px #000; -webkit-box-shadow: 3px 3px 10px #000; box-shadow: 3px 3px 10px #000; } #sc2-hovercard p { margin: 0; } #sc2-hovercard table { margin: 0 0 7px 0; padding: 0; width: 225px; border-bottom: solid 1px #fff; } .sc2-resource { display: inline; float: left; text-indent: 18px; height: 15px; width: 55px; background-repeat: no-repeat; } .sc2-requires { color: #ff6600; }",
+        hovercard_style = "#sc2-hovercard { height: 120px; width: 225px; color: #fff; font-family: Verdana; font-size: 0.7em; padding: 5px; background-color: #000; border: solid 2px #ccc; -webkit-border-radius: 5px; -moz-border-radius: 5px; -moz-opacity: 0.9; opacity:.9; -moz-box-shadow: 3px 3px 10px #000; -webkit-box-shadow: 3px 3px 10px #000; box-shadow: 3px 3px 10px #000; } #sc2-hovercard p { margin: 0; } #sc2-hovercard table { margin: 0 0 7px 0; padding: 0; width: 225px; border-bottom: solid 1px #fff; } .sc2-resource { display: inline; float: left; text-indent: 18px; height: 15px; width: 55px; background-repeat: no-repeat; } .sc2-requires { color: #ff6600; }",
         hovercard = document.createElement("div"),
         sc2objects = {
             /**
