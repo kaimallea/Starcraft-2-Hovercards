@@ -13,7 +13,7 @@
     var i = 0,
         hovercard_customized = false,
         hovercard_sprites = {
-            img: "https://commondatastorage.googleapis.com/mallea/img/sc2icons.png",
+            img: "http://commondatastorage.googleapis.com/mallea/img/sc2icons.png",
             Protoss: "background-position: 0px -248px",
             Terran: "background-position: 0px -283px",
             Zerg: "background-position: 0px -318px",
@@ -34,7 +34,7 @@
                 Zerg: "background-position: 0px -224px"
             }
         },
-        hovercard_style = "#sc2-hovercard { height: 120px; width: 225px; color: #fff; font-family: Verdana; font-size: 0.8em; padding: 5px; background-color: #000; border: solid 2px #ccc; -webkit-border-radius: 5px; -moz-border-radius: 5px; -moz-opacity: 0.9; opacity:.9; -moz-box-shadow: 3px 3px 10px #000; -webkit-box-shadow: 3px 3px 10px #000; box-shadow: 3px 3px 10px #000; } #sc2-hovercard p { margin: 0; } #sc2-hovercard table { margin: 0 0 7px 0; padding: 0; width: 225px; border-bottom: solid 1px #fff; } .sc2-resource { display: inline; float: left; height: 15px; width: 55px; background-repeat: no-repeat; }.sc2hc-requires { color: #ff6600; }",
+        hovercard_style = "#sc2-hovercard { height: 120px; width: 225px; color: #fff; font-family: Verdana; font-size: 0.8em; padding: 5px; background-color: #000; border: solid 2px #ccc; -webkit-border-radius: 5px; -moz-border-radius: 5px; -moz-opacity: 0.9; opacity:.9; -moz-box-shadow: 3px 3px 10px #000; -webkit-box-shadow: 3px 3px 10px #000; box-shadow: 3px 3px 10px #000; } #sc2-hovercard p { margin: 0; } #sc2-hovercard table { margin: 0 0 7px 0; padding: 0; width: 225px; border-bottom: solid 1px #fff; } .sc2-resource { display: inline; float: left; height: 15px; width: 55px; background-repeat: no-repeat; }.sc2-requires { color: #ff6600; }",
         hovercard = document.createElement("div"),
         sc2objects = {
             /**
@@ -1673,21 +1673,26 @@
                              
         // Build "Requires" list
         if (sc2obj.build_from) { 
-            resources += "<p>Requires: <span class='sc2hc-requires'>" + sc2obj.build_from + "</span>";
+            resources += "<p>Requires: <span class='sc2-requires'>" + sc2obj.build_from + "</span>";
             if (!sc2obj.requires) { resources += "</p>"; }
         }
         
         if (sc2obj.requires) {
             if (Object.prototype.toString.apply(sc2obj.requires) === '[object Array]') {
-                if (!sc2obj.build_from) { resources += "<p>Requires: "; }
+                if (!sc2obj.build_from) { 
+                  resources += "<p>Requires: "; 
+                } else {
+                  resources += " > ";
+                }
+                
                 for (var i = 0; i < sc2obj.requires.length; i += 1) {
-                    resources += "<span class='sc2hc-requires'>" + sc2obj.requires[i] + "</span>";
+                    resources += "<span class='sc2-requires'>" + sc2obj.requires[i] + "</span>";
                     if (i !== sc2obj.requires.length - 1) { resources += " > "; }
                 }
                 resources += "</p>";
             } else {
             
-                resources += sc2obj.build_from ? " > " + "<span class='sc2hc-requires'>" + sc2obj.requires + "</span></p>" : "<p>Requires: <span class='sc2hc-requires'>" + sc2obj.requires + "</span></p>";
+                resources += sc2obj.build_from ? " > " + "<span class='sc2-requires'>" + sc2obj.requires + "</span></p>" : "<p>Requires: <span class='sc2-requires'>" + sc2obj.requires + "</span></p>";
             }
         }
                 
