@@ -4,7 +4,7 @@
  * @author Kai Mallea <kai@mallea.net>
  * @license The MIT License - http://www.opensource.org/licenses/mit-license.php
  */
-(function () {
+var SC2HC = (function () {
     var elements = document.querySelectorAll('*[rel]') ||
 //                 document.evaluate("//*[@rel]", document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null) ||
                    oXmlDom.documentElement.selectNodes("[@rel]");
@@ -35,7 +35,7 @@
                 Zerg: "background-position: 0px -224px"
             }
         },
-        hovercard_style = "#sc2-hovercard { height: 120px; width: 225px; color: #fff; font-family: Verdana; font-size: 0.8em; padding: 5px; background-color: #000; border: solid 2px #ccc; -webkit-border-radius: 5px; -moz-border-radius: 5px; -moz-opacity: 0.9; opacity:.9; -moz-box-shadow: 3px 3px 10px #000; -webkit-box-shadow: 3px 3px 10px #000; box-shadow: 3px 3px 10px #000; } #sc2-hovercard p { margin: 0; } #sc2-hovercard table { margin: 0 0 7px 0; padding: 0; width: 225px; border-bottom: solid 1px #fff; } .sc2-resource { display: inline; float: left; height: 15px; width: 55px; background-repeat: no-repeat; }.sc2-requires { color: #ff6600; }",
+        hovercard_style = "#sc2-hovercard { height: 120px; width: 225px; color: #fff; font-family: Verdana; font-size: 1em; padding: 5px; background-color: #000; border: solid 2px #ccc; -webkit-border-radius: 5px; -moz-border-radius: 5px; -moz-opacity: 0.9; opacity:.9; -moz-box-shadow: 3px 3px 10px #000; -webkit-box-shadow: 3px 3px 10px #000; box-shadow: 3px 3px 10px #000; } #sc2-hovercard p { margin: 0; } #sc2-hovercard table { margin: 0 0 7px 0; padding: 0; width: 225px; border-bottom: solid 1px #fff; } .sc2-resource { display: inline; float: left; text-indent: 18px; height: 15px; width: 55px; background-repeat: no-repeat; } .sc2-requires { color: #ff6600; }",
         hovercard = document.createElement("div"),
         sc2objects = {
             /**
@@ -1568,10 +1568,12 @@
      * expression matching any of the individual sc2objects
      */ 
     sc2objects.regex = (function () {
-        var s, o;
+        var s = "", o = "";
+        
         for (o in sc2objects) {
             s += o + "|";
         }
+        
         return RegExp("\\b" + s.slice(0, -1) + "\\b", "i");
     })();
     
@@ -1640,11 +1642,10 @@
                      "<th style='background-image: url(\"{{sprite}}\"); background-repeat: no-repeat; {{race}};'" +
                      "height='25px' width='25px' align='right'>&nbsp;</th></tr></table>",
             
-            resources = "<span class='sc2-resource' style='background-image: url(\"{{sprite}}\"); {{bg_supply}};'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{supply}}</span>" +
-                        "<span class='sc2-resource' style='background-image: url(\"{{sprite}}\"); {{bg_mineral}};'>&nbsp;&nbsp;&nbsp;&nbsp;{{mineral}}</span>" +
-                        "<span class='sc2-resource' style='background-image: url(\"{{sprite}}\"); {{bg_vespene}};'>&nbsp;&nbsp;&nbsp;&nbsp;{{vespene}}</span>" +
-                        "<span class='sc2-resource' style='background-image: url(\"{{sprite}}\"); {{bg_build_time}};'>&nbsp;&nbsp;&nbsp;&nbsp;{{build_time}}</span><div style='clear: both'></div><br />";
-        
+            resources = "<span class='sc2-resource' style='background-image: url(\"{{sprite}}\"); {{bg_supply}};'>{{supply}}</span>" +
+                        "<span class='sc2-resource' style='background-image: url(\"{{sprite}}\"); {{bg_mineral}};'>{{mineral}}</span>" +
+                        "<span class='sc2-resource' style='background-image: url(\"{{sprite}}\"); {{bg_vespene}};'>{{vespene}}</span>" +
+                        "<span class='sc2-resource' style='background-image: url(\"{{sprite}}\"); {{bg_build_time}};'>{{build_time}}</span><div style='clear: both'></div><br />";
         
         // Inject object's name and image sprite path
         header = header.replace("{{name}}", name)
@@ -1659,8 +1660,9 @@
                              .replace("{{bg_mineral}}", hovercard_sprites.mineral);
                              
                              
-        // Inject object's supply count (or "0") and supply sprite
-        resources = resources.replace("{{supply}}", (sc2obj.supply ? sc2obj.supply : "0"))
+        // Inject object's supply count (or "0") and supply sprite.
+        // If object is a supplier, prepend with "+".
+        resources = resources.replace("{{supply}}", (sc2obj.supplier) ? (sc2obj.supply ? "+" + sc2obj.supply : "0") : (sc2obj.supply ? sc2obj.supply : "0"))
                              .replace("{{bg_supply}}", hovercard_sprites.supply[sc2obj.race]);
 
                  
@@ -1753,31 +1755,44 @@
     
     init();
     
-    // Attach an event listener all elements with matching rel tags
-    for ( ; i < elements.length; i += 1) {
-        var e = elements[i];
-        if (sc2objects.regex.test(e.getAttribute("rel"))) {
-            
-            // Don't mangle existing stuff
-            if (e.onmousemove || e.onmouseout) { return; }
-            
-            e.onmousemove = function (ev) {
-                var coords = getMouseCoords(ev);
-                if (!coords) { return; }
-                hovercard.style.top = (coords.y + 10) + "px";
-                hovercard.style.left = (coords.x + 10) + "px";
-                if (hovercard.style.display !== 'block') {
-                    var that = this;
-                    showHovercard(that, coords)
-                }
-            };
-            
-            if (!hovercard_customized) { e.style.cursor = "pointer" };
-            
-            // Hide or cancel hovercard on mouseout
-            e.onmouseout = function () {
-                hideHovercard();
-            };
+    function attach() {
+        // Attach an event listener all elements with matching rel tags
+        for ( ; i < elements.length; i += 1) {
+            var e = elements[i];
+            if (sc2objects.regex.test(e.getAttribute("rel"))) {
+
+                // Don't mangle existing stuff
+                if (e.onmousemove || e.onmouseout) { return; }
+
+                e.onmousemove = function (ev) {
+                    var coords = getMouseCoords(ev);
+                    if (!coords) { return; }
+                    hovercard.style.top = (coords.y + 10) + "px";
+                    hovercard.style.left = (coords.x + 10) + "px";
+                    if (hovercard.style.display !== 'block') {
+                        var that = this;
+                        showHovercard(that, coords)
+                    }
+                };
+
+                if (!hovercard_customized) { e.style.cursor = "pointer" };
+
+                // Hide or cancel hovercard on mouseout
+                e.onmouseout = function () {
+                    hideHovercard();
+                };
+            }
+        }   
+    }
+    
+    attach();
+    
+    return {
+        attach: function () {
+            elements = document.querySelectorAll('*[rel]') ||
+            //         document.evaluate("//*[@rel]", document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null) ||
+                       oXmlDom.documentElement.selectNodes("[@rel]");
+            attach();
         }
     }
 })();
