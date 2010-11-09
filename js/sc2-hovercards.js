@@ -1757,7 +1757,7 @@ var SC2HC = (function () {
     
     function attach() {
         // Attach an event listener all elements with matching rel tags
-        for ( ; i < elements.length; i += 1) {
+        for (var i = 0; i < elements.length; i += 1) {
             var e = elements[i];
             if (sc2objects.regex.test(e.getAttribute("rel"))) {
 
