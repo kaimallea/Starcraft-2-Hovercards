@@ -1722,23 +1722,44 @@ var SC2HC = (function () {
         return { x: posx, y: posy };
     }
     
+    
+    // Make sure hovercard doesn't move off the screen
+    function getBestHovercardPosition (coords) {
+        if (!coords) { return; }
+        
+        var hovercard_xy = { 
+                x: hovercard.offsetWidth,
+                y: hovercard.offsetHeight 
+            },
+            windowWidth = window.innerWidth || document.body.offsetWidth,
+            windowHeight = window.innerHeight || document.body.offsetHeight,
+            rightThreshold = (windowWidth - (hovercard_xy.x + 20)), // Extra pixels for shadows, etc.
+            bottomThreshold = (windowHeight - (hovercard_xy.y + 20)),
+            best = {};
+        
+        best.x = (coords.x > rightThreshold) ? (coords.x - hovercard_xy.x) : (coords.x + 10);
+        best.y = (coords.y > bottomThreshold) ? (coords.y - hovercard_xy.y) : (coords.y + 10);
+        
+        return {x: best.x, y: best.y};
+    }
+    
+    
     function showHovercard (that, coords) {
         var name = titleCaps(that.getAttribute("rel").toLowerCase());
         hovercard.innerHTML = generateHTML(name, sc2objects[name]);
-        hovercard.style.left = (coords.x + 10) + "px";
-        hovercard.style.top = (coords.y + 10) + "px";
-        hovercard.style.display = "block";
+        hovercard.style.visibility = "visible";
     }
     
     function hideHovercard () {
-        hovercard.style.display = "none";
+        hovercard.style.visibility = "hidden";
     }
     
     function init () {
         hovercard.id = "sc2-hovercard";
         hovercard.style.zIndex = "999999";
         hovercard.style.position = "absolute";
-        hovercard.style.display = "none";
+        hovercard.style.display = "block";
+        hovercard.style.visibility = "hidden";
         
         if (!hovercard_customized) {
             var e = document.createElement("style");
@@ -1765,11 +1786,13 @@ var SC2HC = (function () {
                 if (e.onmousemove || e.onmouseout) { return; }
 
                 e.onmousemove = function (ev) {
-                    var coords = getMouseCoords(ev);
+                    var coords = getBestHovercardPosition(getMouseCoords(ev));
                     if (!coords) { return; }
-                    hovercard.style.top = (coords.y + 10) + "px";
-                    hovercard.style.left = (coords.x + 10) + "px";
-                    if (hovercard.style.display !== 'block') {
+                    
+                    hovercard.style.left = coords.x + "px";
+                    hovercard.style.top = coords.y + "px";
+                    
+                    if (hovercard.style.visibility == 'hidden') {
                         var that = this;
                         showHovercard(that, coords)
                     }
