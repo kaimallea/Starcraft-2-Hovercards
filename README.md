@@ -10,6 +10,8 @@ To use, simply include the JS file at the _bottom_ of your `<body>` tag. It is _
 
 Any elements containing a `rel` attribute that references a SC2 multiplayer object will produce a hovercard when moused over.
 
+If you wish to activate matching `rel` tags again (e.g., you're dynamically adding content), call SC2HC.attach() at any time.
+
 ### Example
 
     <!DOCTYPE html>
